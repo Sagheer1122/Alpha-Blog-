@@ -25,5 +25,5 @@ Things you may want to cover:
 * ...
 =======
 # Alpha-Blog-
-This is a Blog website created using Ruby On rails 
+This is a Blog website created on Ruby on Rails 
 >>>>>>> c7bfcae96f1a72e468f2380b96e6c1083d1da877
