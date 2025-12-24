@@ -1,0 +1,10 @@
+<% content_for :title, "Editing artical" %>
+
+<h1 class="text-center mt-3">Editing artical</h1>
+
+<%= render "form", artical: @artical %>
+
+<div class="justify-content-center text-center mb-2">
+  <%= link_to "Show this artical", @artical, class: "btn pl-3 btn-info" %>
+  <%= link_to "Back to articals", articals_path, class: "btn pl-3 btn-primary" %>
+</div>

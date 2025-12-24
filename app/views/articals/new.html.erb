@@ -1,0 +1,10 @@
+
+<body style="background-color: lightgray;">
+<h1 style="" class="text-center mt-3">Create new Articals </h1>
+<% content_for :title, "New artical" %>
+<%= render "form", artical: @artical %>
+<div class=" justify-content-center text-center mb-2" >
+<%= link_to "Show this artical", @artical , class: "btn pl-3  btn-info" %>
+<%= link_to "Back to articals", articals_path, class: "btn pl-3  btn-primary" %>
+</div>
+</body>
