@@ -4,4 +4,5 @@ class Artical < ApplicationRecord
   validates :category, presence: true
   belongs_to :user, optional: true
   CATEGORIES = [ "Food", "Travel", "Technology", "Lifestyle", "News" ]
+  belongs_to :user
 end

@@ -25,6 +25,7 @@ class ArticalsController < ApplicationController
 
   def create
     @artical = Artical.new(artical_params)
+    @artical.user = User.first
 
     if @artical.save
       redirect_to @artical, notice: "Article was successfully created."
