@@ -19,8 +19,8 @@
           <div class="col-lg-11 mx-auto">
             <div class="card shadow-lg mb-4 bg-body rounded border-0"> 
               <div class="card-header text-bg-secondary text-center fst-italic">
-                By Sagheer Ahmad
-              </div>
+                <%= @artical.user ? "Written by #{@artical.user.username}" : "Author Unknown" %>
+              </div>  
               <div class="card-body p-4 text-center">
                 <h2 class="card-title text-primary mb-1"><%= @artical.title %></h2>
                 <div class="mt-2 mb-3">
