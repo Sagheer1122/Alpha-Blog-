@@ -9,27 +9,21 @@
         <li class="nav-item">    
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Articles
-          </a>
-          <ul class="dropdown-menu">
-            <%= link_to "Create New Article", new_artical_path, class: "dropdown-item" %>
-            <%= link_to "View Articles", articals_path, class: "dropdown-item" %>
-          </ul>
+      <li class="nav-item">    
+          <%= link_to "Articals", articals_path, class: "nav-link" %>
         </li>
       <li class="nav-item">    
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= form_with url: articals_path, method: :get, class: "d-flex", role: "search" do |f| %>
+        <%= f.search_field :search, value: params[:search], class: "form-control me-2", placeholder: "Search articles...", "aria-label": "Search" %>
+        <%= f.submit "Search", class: "btn btn-outline-success" %>
+      <% end %>
     </div>
   </div>
 </nav>
+
 
 
 

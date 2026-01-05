@@ -1,8 +1,12 @@
 <div class="container">
-<% if notice %>
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <%= notice %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% end %>
+<div class="toast-container-custom">
+  <% flash.each do |key, value| %>
+    <div class="custom-toast alert-<%= key == 'notice' ? 'success' : 'danger' %> fade show" role="alert">
+      <div class="toast-content">
+        
+        <%= value %>
+      </div>
+    </div>
+  <% end %>
+</div>
 </div>

@@ -3,6 +3,13 @@ class ArticalsController < ApplicationController
 
   def index
     @articals = Artical.all
+    if params[:category].present?
+    @articals = @articals.where("LOWER(category) = ?", params[:category].downcase)
+    end
+
+    if params[:search].present?
+      @articals = @articals.where("LOWER(title) LIKE ? OR LOWER(description) LIKE ?", "%#{params[:search].downcase}%", "%#{params[:search].downcase}%")
+    end
   end
 
   def show
@@ -36,7 +43,10 @@ class ArticalsController < ApplicationController
 
   def destroy
     @artical.destroy
-    redirect_to articals_path, notice: "Article was successfully destroyed.", status: :see_other
+    if Artical.count == 0
+      ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence WHERE name='articals'")
+    end
+    redirect_to articals_path, alert: "Article was successfully destroyed.", status: :see_other
   end
 
   private
@@ -46,6 +56,6 @@ class ArticalsController < ApplicationController
   end
 
   def artical_params
-    params.require(:artical).permit(:title, :description)
+    params.require(:artical).permit(:title, :description, :category)
   end
 end

@@ -1,32 +1,50 @@
-
-<body style="background-color : lightgray;">
-<h1 style="margin-top: 10px;" class="text-center">Articals listing Page</h1>
-
-<div class="container">
-  <div class="row">
-    <% @articals.each do |artical| %>
-      <div class="col-8 mb-4 justify-content-center mx-auto ">
-        <div class="card h-100 text-center shadow  mb-2 bg-body rounded"> 
-          <div class="card-header text-bg-secondary fst-italic">
-            By Sagheer Ahmad
-          </div>
-          <div class="card-body">
-            <h5 class="card-title "><%= link_to artical.title, artical, class: "text-success green-link" %></h5>
-            <p class="card-text"><%= truncate(artical.description, length: 100) %></p>
-            <div class="d-flex justify-content-center gap-2">
-              <%= link_to "View", artical, class: "btn btn-outline-success" %>
-              <%= link_to "Edit", edit_artical_path(artical), class: "btn btn-outline-info" %>
-              <%= link_to "Delete", artical, method: :delete, class: "btn btn-outline-danger" %>
-            </div>
-
-        
-          </div>
-          <div class="card-footer text-muted  ">
-            Posted on <%= artical.created_at.strftime("%B %d, %Y") %>
-          </div>
+<div class="container-fluid min-vh-100 d-flex flex-column">
+  <div class="row flex-grow-1">
+    <div class="col-md-2 p-0 shadow-sm">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-md-10">
+      <div class="d-flex justify-content-between align-items-center mt-3 mb-2 px-4">
+        <h1 class="mb-0">Articles Listing</h1>
+        <%= link_to "Create New Article", new_artical_path, class: "btn btn-primary shadow-sm" %>
+      </div>
+      <div class="container mt-4 pb-5">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered shadow-sm bg-white rounded shadow-lg">
+            <thead class="table-dark ">
+              <tr>
+                <th scope="col">Article ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @articals.each do |artical| %>
+                <tr>
+                  <td><%= artical.id %></td>
+                  <td><%= link_to artical.title, artical, class: "text-decoration-none text-primary fw-bold" %></td>
+                  <td><%= truncate(artical.description, length: 50) %></td>
+                  <td><span class="badge bg-info text-dark"><%= artical.category %></span></td>
+                  <td>
+                    <div class="d-flex justify-content-center gap-2">
+                      <%= link_to "View", artical, class: "btn btn-sm btn-outline-success" %>
+                      <%= link_to "Edit", edit_artical_path(artical), class: "btn btn-sm btn-outline-info" %>
+                      <%= button_to "Delete", artical, method: :delete, class: "btn btn-sm btn-outline-danger", data: { turbo_confirm: "Are you sure you want to delete this article?" } %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+            <% if @articals.empty? %>
+              <tr>
+                <td colspan="5" class="text-center">No articles found</td>
+              </tr>
+            <% end %>
+          </table>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-<body>

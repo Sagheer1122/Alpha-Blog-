@@ -1,0 +1,41 @@
+<div class="sidebar-container flex-shrink-0 p-3">
+
+  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <span class="fs-5 fw-bold sidebar-title">Categories</span>
+  </a>
+
+  <ul class="nav nav-pills flex-column mb-auto sidebar-list">
+    <li class="nav-item mb-2 section-header dropdown">
+      <div class="d-flex align-items-center px-3 py-2 text-muted fw-semibold dropdown-toggle w-100" style="cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false">
+        📂 ARTICLE TYPES
+      </div>
+      <ul class="dropdown-menu sidebar-dropdown-menu w-100 border-0 shadow-lg">
+        <li>
+          <%= link_to articals_path(category: "Food"), class: "dropdown-item category-link #{'active' if params[:category] == 'Food'}" do %>
+            <span class="icon">🍔</span> Food
+          <% end %>
+        </li>
+        <li>
+          <%= link_to articals_path(category: "Travel"), class: "dropdown-item category-link #{'active' if params[:category] == 'Travel'}" do %>
+            <span class="icon">✈️</span> Travel
+          <% end %>
+        </li>
+        <li>
+          <%= link_to articals_path(category: "Technology"), class: "dropdown-item category-link #{'active' if params[:category] == 'Technology'}" do %>
+            <span class="icon">💻</span> Technology
+          <% end %>
+        </li>
+        <li>
+          <%= link_to articals_path(category: "Lifestyle"), class: "dropdown-item category-link #{'active' if params[:category] == 'Lifestyle'}" do %>
+            <span class="icon">🌿</span> Lifestyle
+          <% end %>
+        </li>
+        <li>
+          <%= link_to articals_path(category: "News"), class: "dropdown-item category-link #{'active' if params[:category] == 'News'}" do %>
+            <span class="icon">📰</span> News
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

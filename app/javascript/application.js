@@ -1,5 +1,17 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
 import * as bootstrap from "bootstrap"
 import "bootstrap"
+
+
+document.addEventListener("turbo:load", () => {
+    const toasts = document.querySelectorAll('.custom-toast');
+    toasts.forEach(toast => {
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 500);
+        }, 3000);
+    });
+});
